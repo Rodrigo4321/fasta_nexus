@@ -80,8 +80,8 @@ def end(outgroup, ngen):
 	start = "  ;\nEND;\n\nbegin mrbayes;\n  set autoclose=yes;\n"
 	outgroups = "  outgroup %s;\n" % outgroup
 	ngens = "  mcmcp ngen=%d " % ngen 
-	rest1 = "printfreq=1000 samplefreq=100 diagnfreq=1000 nchains=4 savebrlens=yes filename=MyRun01;\n  mcmc;\n  sumt filename=MyRun01;\nend;"
-	end = start + outgroups + ngens + rest1
+	rest = "printfreq=1000 samplefreq=100 diagnfreq=1000 nchains=4 savebrlens=yes filename=MyRun01;\n  mcmc;\n  sumt filename=MyRun01;\nend;"
+	end = start + outgroups + ngens + rest
 	print(end)
 
 

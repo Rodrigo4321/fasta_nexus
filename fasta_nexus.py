@@ -8,7 +8,7 @@ if("-help" in sys.argv):
 else:
 	fasta_file = sys.stdin
 	outgroup = sys.argv[1] #cria variável outgroup que guarda o primeiro argumento
-	ngen = sys.argv[2] #cria variável ngen que guarda o segundo argumento
+	ngen = int(sys.argv[2]) #cria variável ngen que guarda o segundo argumento
 
 
 Dicionario = {}
@@ -79,8 +79,9 @@ def end(outgroup, ngen):
 	end = ""
 	start = "  ;\nEND;\n\nbegin mrbayes;\n  set autoclose=yes;\n"
 	outgroups = "  outgroup %s;\n" % outgroup
-	rest = "  mcmcp ngen=%d printfreq=1000 samplefreq=100 diagnfreq=1000 nchains=4 savebrlens=yes filename=MyRun01;\n  mcmc;\n  sumt filename=MyRun01;\nend;"
-	end = start + outgroups + rest + end
+	ngens = "  mcmcp ngen=%d " % ngen 
+	rest1 = "printfreq=1000 samplefreq=100 diagnfreq=1000 nchains=4 savebrlens=yes filename=MyRun01;\n  mcmc;\n  sumt filename=MyRun01;\nend;"
+	end = start + outgroups + ngens + rest1
 	print(end)
 
 
